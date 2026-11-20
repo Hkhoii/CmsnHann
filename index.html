@@ -428,7 +428,7 @@
       const heart = document.getElementById("heart");
       const bgMusic = document.getElementById("bg-music");
       const finaleMusic = document.getElementById("finale-music");
-      const FINALE_START = 0; // giây bắt đầu của nhạc màn cuối (đổi số này nếu muốn bắt đầu từ đoạn khác)
+      const FINALE_START = ̉́̉68; // giây bắt đầu của nhạc màn cuối (đổi số này nếu muốn bắt đầu từ đoạn khác)
       const progressDots = document.getElementById("progress-dots");
       const slidesContainer = document.getElementById("slides");
       const fallingContainer = document.getElementById("falling-container");
@@ -673,7 +673,7 @@
         createStars();
         showSlide(0);
 
-        bgMusic.currentTime = 20;
+        bgMusic.currentTime = 45;
         bgMusic.play().catch((e) => console.log("Tự động phát bị chặn:", e));
 
         // Mở khóa trước nhạc màn cuối (chạy im lặng rồi dừng) để sau này tự phát được
