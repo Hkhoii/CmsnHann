@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lời chúc dành cho em ❤️</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://i.postimg.cc/qvjz8QFW/Logo.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overflow: hidden;
+        font-family: "Be Vietnam Pro", "Segoe UI", "Roboto", sans-serif;
+        font-weight: 300;
+        background-color: #000;
+        background-image: url("https://i.pinimg.com/originals/80/93/eb/8093eb596b38846d47cf30feb907d68f.gif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        touch-action: manipulation;
+      }
+
+      #intro-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        transition: opacity 1s;
+      }
+
+      #intro-text {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        margin-bottom: 30px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 2s forwards 1s;
+        padding: 0 20px;
+      }
+
+      #heart {
+        font-size: clamp(3rem, 10vw, 5rem);
+        animation:
+          pulse 2s infinite,
+          float 3s ease-in-out infinite;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      #heart:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .star {
+        position: absolute;
+        background-color: #fff;
+        border-radius: 50%;
+        animation:
+          fall linear infinite,
+          blink 1s infinite alternate;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+
+      @keyframes blink {
+        from {
+          opacity: 0.3;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 1s ease-in-out,
+          visibility 1s;
+      }
+
+      .slide.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .message {
+        font-size: clamp(1rem, 3vw, 1.8rem);
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        width: min(90vw, 800px);
+        min-height: 3em;
+        max-height: 40vh;
+        overflow-y: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 16px 20px;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.45);
+        box-shadow:
+          0 0 15px rgba(0, 115, 230, 0.6),
+          inset 0 0 12px rgba(255, 255, 255, 0.08);
+      }
+
+      .hacker-text {
+        color: #fff;
+        text-shadow:
+          0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 15px #0073e6,
+          0 0 20px #0073e6;
+        transition: all 0.1s;
+        width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+
+      .hacker-text.complete {
+        animation: strongGlow 0.5s infinite alternate;
+      }
+
+      @keyframes strongGlow {
+        from {
+          text-shadow:
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 30px #ff00ff,
+            0 0 40px #ff00ff;
+        }
+        to {
+          text-shadow:
+            0 0 15px #fff,
+            0 0 25px #fff,
+            0 0 35px #ff00ff,
+            0 0 45px #ff00ff,
+            0 0 55px #ff00ff;
+        }
+      }
+
+      .slide img {
+        width: min(80vw, 300px);
+        height: min(80vw, 300px);
+        object-fit: contain;
+        border-radius: 10px;
+        margin: 10px 0;
+        filter: drop-shadow(0 0 10px rgba(156, 39, 176, 0.7));
+      }
+
+      .progress-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        flex-wrap: wrap;
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 5px;
+        transition:
+          background-color 0.3s,
+          transform 0.3s;
+        cursor: pointer;
+      }
+
+      .dot:hover {
+        transform: scale(1.2);
+      }
+
+      .dot.active {
+        background-color: rgba(255, 255, 255, 1);
+        transform: scale(1.2);
+      }
+
+      .falling-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 60;
+      }
+
+      .falling-item {
+        position: absolute;
+        top: -20%;
+        object-fit: cover;
+        border-radius: 12px;
+        animation: fallDown linear infinite;
+      }
+
+      .falling-item--image {
+        border: 3px solid #ff0000;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        animation:
+          fallDown linear infinite,
+          borderRainbow 3s linear infinite;
+      }
+
+      @keyframes fallDown {
+        to {
+          transform: translateY(120vh);
+        }
+      }
+
+      @keyframes borderRainbow {
+        0% {
+          border-color: #ff0000;
+        }
+        16% {
+          border-color: #ff8800;
+        }
+        33% {
+          border-color: #ffee00;
+        }
+        50% {
+          border-color: #00ff66;
+        }
+        66% {
+          border-color: #00c8ff;
+        }
+        83% {
+          border-color: #a600ff;
+        }
+        100% {
+          border-color: #ff0000;
+        }
+      }
+
+      /* Điều chỉnh cho màn hình rất nhỏ */
+      @media (max-height: 500px) {
+        .slide {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-content: center;
+        }
+
+        .message {
+          width: min(90vw, 320px);
+          max-height: 90vh;
+          margin-bottom: 10px;
+          padding: 10px 14px;
+        }
+
+        .slide img {
+          width: min(40vh, 200px);
+          height: min(40vh, 200px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .message {
+          width: min(92vw, 360px);
+          font-size: clamp(0.95rem, 4.5vw, 1.4rem);
+          padding: 12px 16px;
+          border-width: 1.5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="intro-screen">
+      <div id="intro-text">Chạm vào trái tim</div>
+      <div id="heart" role="button" aria-label="Bắt đầu trình chiếu">❤️</div>
+    </div>
+
+    <div class="stars" id="stars" aria-hidden="true"></div>
+
+    <div id="slides"></div>
+
+    <div
+      class="falling-container"
+      id="falling-container"
+      aria-hidden="true"
+    ></div>
+
+    <div class="progress-dots" id="progress-dots"></div>
+
+    <audio id="bg-music" loop>
+      <source src="./style/nhac.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      const slidesData = [
+        {
+          text: "Chào buổi sáng, cô gái anh yêu! Cảm ơn em vì đã xuất hiện và làm cuộc sống của anh trở nên ý nghĩa hơn.",
+          gif: "https://i.pinimg.com/originals/b6/b1/d6/b6b1d64609f266d8f236752d8551f26f.gif",
+        },
+        {
+          text: "Anh chỉ mong hôm nay em sẽ luôn mỉm cười, vì nụ cười của em chính là điều đẹp nhất đối với anh.",
+          gif: "https://i.pinimg.com/originals/3f/4e/d3/3f4ed3cb1539cb42dc93b78020a3ef55.gif",
+        },
+        {
+          text: "Dù hôm nay có bận rộn đến đâu, hãy nhớ rằng luôn có một người âm thầm yêu thương và dõi theo em.",
+          gif: "https://i.pinimg.com/originals/b7/c6/4a/b7c64aca651271c52087f58276bd1de1.gif",
+        },
+        {
+          text: "Anh mong mọi điều tốt đẹp sẽ đến với em, bởi em xứng đáng nhận được những điều tuyệt vời nhất.",
+          gif: "https://i.pinimg.com/originals/7e/f6/9c/7ef69cd0a6b0b78526c8ce983b3296fc.gif",
+        },
+        {
+          text: "Nếu có lúc em cảm thấy mệt mỏi, hãy nhớ rằng anh luôn ở đây để lắng nghe, sẻ chia và ôm em thật chặt.",
+          gif: "https://i.pinimg.com/originals/4e/89/d3/4e89d3e4ec4b1f59b1664e880a875c65.gif",
+        },
+        {
+          text: "Chỉ cần em hạnh phúc, với anh đó đã là món quà tuyệt vời nhất của mỗi ngày.",
+          gif: "https://i.pinimg.com/originals/fd/60/15/fd6015dd3f31d0223374f993f66e85d3.gif",
+        },
+        {
+          text: "Anh yêu em nhiều hơn mỗi ngày. Chúc em luôn bình an, vui vẻ và mãi là cô gái đáng yêu nhất trong tim anh.",
+          gif: "https://i.pinimg.com/originals/56/80/90/5680904ede54bea21d02450affebfc4f.gif",
+        },
+      ];
+
+      const localImages = Array.from(
+        { length: 10 },
+        (_, i) => `./style/img/Anh%20(${i + 1}).jpg`,
+      );
+
+      let currentSlide = 0;
+      let finaleShown = false;
+      let currentHackerInterval = null;
+      let advanceTimeout = null;
+      const totalSlides = slidesData.length;
+      const starsContainer = document.getElementById("stars");
+      const introScreen = document.getElementById("intro-screen");
+      const heart = document.getElementById("heart");
+      const bgMusic = document.getElementById("bg-music");
+      const progressDots = document.getElementById("progress-dots");
+      const slidesContainer = document.getElementById("slides");
+      const fallingContainer = document.getElementById("falling-container");
+      let slides;
+
+      function createSlides() {
+        slidesData.forEach((data, index) => {
+          const slide = document.createElement("div");
+          slide.classList.add("slide");
+          slide.id = `slide${index + 1}`;
+
+          const message = document.createElement("div");
+          message.classList.add("message");
+          message.id = `message${index + 1}`;
+
+          const hackerText = document.createElement("div");
+          hackerText.classList.add("hacker-text");
+          message.appendChild(hackerText);
+
+          const img = document.createElement("img");
+          img.src = data.gif;
+          img.alt = "";
+
+          slide.appendChild(message);
+          slide.appendChild(img);
+          slidesContainer.appendChild(slide);
+        });
+
+        slides = document.querySelectorAll(".slide");
+      }
+
+      function init() {
+        createSlides();
+        createProgressDots();
+        preloadImages();
+        setEventListeners();
+        program();
+      }
+
+      function createProgressDots() {
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement("div");
+          dot.classList.add("dot");
+          dot.setAttribute("data-index", i);
+          if (i === 0) dot.classList.add("active");
+          progressDots.appendChild(dot);
+        }
+      }
+
+      function preloadImages() {
+        const images = document.querySelectorAll(".slide img");
+        images.forEach((img) => {
+          const image = new Image();
+          image.src = img.src;
+        });
+      }
+
+      function program(delay = 200) {
+        (function () {
+          const _b = (s) => decodeURIComponent(escape(atob(s)));
+          const _d = [
+            "QuG6o24gcXV54buBbiB0aHXhu5ljIHbhu4IgRHIuR2lmdGVy",
+            "VGlrdG9rOiBodHRwczovL3d3dy50aWt0b2suY29tL0Bkci5naWZ0ZXIzMDY=",
+            "R2l0aHViOiBodHRwczovL2dpdGh1Yi5jb20vRHJHaWZ0ZXI=",
+          ];
+
+          setTimeout(() => {
+            _d.forEach((x) => console.log(_b(x)));
+          }, delay);
+        })();
+      }
+
+      const hackerLetters = "01!@#$%^&*()_+-=[]{}|;:,.<>?/";
+
+      function hackerEffect(element, finalText, iterations = 3, onComplete) {
+        let iteration = 0;
+        currentHackerInterval = setInterval(() => {
+          element.textContent = finalText
+            .split("")
+            .map((char, index) => {
+              if (index < iteration || char === " ") {
+                return finalText[index];
+              }
+              return hackerLetters[Math.floor(Math.random() * hackerLetters.length)];
+            })
+            .join("");
+          if (iteration >= finalText.length) {
+            clearInterval(currentHackerInterval);
+            currentHackerInterval = null;
+            element.classList.add("complete");
+            if (onComplete) onComplete();
+          }
+          iteration += 1 / iterations;
+        }, 30);
+      }
+
+      function startFallingEffect() {
+        const fallingSources = [
+          ...localImages.map((src) => ({ src, isImage: true })),
+          ...slidesData.map((data) => ({ src: data.gif, isImage: false })),
+        ];
+        const itemCount = 24;
+
+        for (let i = 0; i < itemCount; i++) {
+          const { src, isImage } =
+            fallingSources[Math.floor(Math.random() * fallingSources.length)];
+
+          const item = document.createElement("img");
+          item.classList.add("falling-item");
+          if (isImage) item.classList.add("falling-item--image");
+          item.src = src;
+          item.alt = "";
+          item.onerror = () => item.remove();
+
+          const size = Math.random() * 80 + 50;
+          item.style.width = `${size}px`;
+          item.style.height = `${size}px`;
+
+          item.style.left = `${Math.random() * 95}%`;
+
+          const fallDuration = Math.random() * 6 + 5;
+          const delay = Math.random() * 6;
+
+          if (isImage) {
+            const borderDuration = Math.random() * 2 + 2;
+            item.style.animationDuration = `${fallDuration}s, ${borderDuration}s`;
+            item.style.animationDelay = `${delay}s, 0s`;
+          } else {
+            item.style.animationDuration = `${fallDuration}s`;
+            item.style.animationDelay = `${delay}s`;
+          }
+
+          fallingContainer.appendChild(item);
+        }
+      }
+
+      function createStars() {
+        const starCount = 100;
+
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement("div");
+          star.classList.add("star");
+          const size = Math.random() * 2 + 1;
+          star.style.width = `${size}px`;
+          star.style.height = `${size}px`;
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.top = `${Math.random() * -100}px`;
+          const duration = Math.random() * 10 + 5;
+          star.style.animationDuration = `${duration}s`;
+          star.style.animationDelay = `${Math.random() * 5}s`;
+          starsContainer.appendChild(star);
+        }
+      }
+
+      function showSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        if (currentHackerInterval) clearInterval(currentHackerInterval);
+        if (advanceTimeout) clearTimeout(advanceTimeout);
+
+        currentSlide = index;
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+        });
+        slides[index].classList.add("active");
+        document.querySelectorAll(".dot").forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add("active");
+          } else {
+            dot.classList.remove("active");
+          }
+        });
+
+        document.querySelectorAll(".hacker-text").forEach((text) => {
+          text.classList.remove("complete");
+        });
+
+        const messageElement = document.querySelector(
+          `#message${index + 1} .hacker-text`,
+        );
+        const isLastSlide = index === totalSlides - 1;
+
+        hackerEffect(messageElement, slidesData[index].text, 3, () => {
+          advanceTimeout = setTimeout(() => {
+            if (isLastSlide) {
+              if (!finaleShown) {
+                finaleShown = true;
+                slides[index].classList.remove("active");
+                advanceTimeout = setTimeout(startFallingEffect, 1000);
+              }
+            } else {
+              nextSlide();
+            }
+          }, 2000);
+        });
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % totalSlides);
+      }
+
+      function prevSlide() {
+        showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+      }
+
+      function startPresentation() {
+        introScreen.style.opacity = "0";
+        setTimeout(() => {
+          introScreen.style.display = "none";
+        }, 1000);
+
+        createStars();
+        showSlide(0);
+
+        bgMusic.currentTime = 20;
+        bgMusic.play().catch((e) => console.log("Tự động phát bị chặn:", e));
+      }
+
+      function setEventListeners() {
+        heart.addEventListener("click", startPresentation);
+
+        document.addEventListener("keydown", (e) => {
+          if (introScreen.style.display === "none") {
+            if (e.key === "ArrowRight") nextSlide();
+            if (e.key === "ArrowLeft") prevSlide();
+          }
+        });
+
+        document.querySelectorAll(".dot").forEach((dot) => {
+          dot.addEventListener("click", (e) => {
+            const index = parseInt(e.target.getAttribute("data-index"));
+            showSlide(index);
+          });
+        });
+
+        window.addEventListener("load", adjustImages);
+        window.addEventListener("resize", adjustImages);
+      }
+
+      function adjustImages() {
+        const images = document.querySelectorAll(".slide img");
+        const size = Math.min(window.innerWidth * 0.8, window.innerHeight * 0.5, 300);
+
+        images.forEach((img) => {
+          img.style.width = `${size}px`;
+          img.style.height = `${size}px`;
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
