@@ -377,6 +377,10 @@
       <source src="./style/nhac.mp3" type="audio/mpeg" />
     </audio>
 
+    <audio id="finale-music" loop preload="auto">
+      <source src="./style/nhac2.mp3" type="audio/mpeg" />
+    </audio>
+
     <script>
       const slidesData = [
         {
@@ -423,6 +427,8 @@
       const introScreen = document.getElementById("intro-screen");
       const heart = document.getElementById("heart");
       const bgMusic = document.getElementById("bg-music");
+      const finaleMusic = document.getElementById("finale-music");
+      const FINALE_START = 0; // giây bắt đầu của nhạc màn cuối (đổi số này nếu muốn bắt đầu từ đoạn khác)
       const progressDots = document.getElementById("progress-dots");
       const slidesContainer = document.getElementById("slides");
       const fallingContainer = document.getElementById("falling-container");
@@ -519,7 +525,37 @@
         }, 30);
       }
 
+      function fadeAudio(audio, target, duration = 1500, onDone) {
+        const steps = 30;
+        const delta = (target - audio.volume) / steps;
+        let count = 0;
+        const timer = setInterval(() => {
+          count++;
+          audio.volume = Math.min(1, Math.max(0, audio.volume + delta));
+          if (count >= steps) {
+            clearInterval(timer);
+            audio.volume = target;
+            if (onDone) onDone();
+          }
+        }, duration / steps);
+      }
+
+      function playFinaleMusic() {
+        finaleMusic.muted = false;
+        finaleMusic.volume = 0;
+        finaleMusic.currentTime = FINALE_START;
+        finaleMusic
+          .play()
+          .then(() => {
+            // Nhạc mới nhỏ dần vào, nhạc nền nhỏ dần rồi tắt
+            fadeAudio(finaleMusic, 1, 2000);
+            fadeAudio(bgMusic, 0, 2000, () => bgMusic.pause());
+          })
+          .catch((e) => console.log("Không phát được nhạc màn cuối:", e));
+      }
+
       function startFallingEffect() {
+        playFinaleMusic();
         const fallingSources = [
           ...localImages.map((src) => ({ src, isImage: true })),
           ...slidesData.map((data) => ({ src: data.gif, isImage: false })),
@@ -639,6 +675,16 @@
 
         bgMusic.currentTime = 20;
         bgMusic.play().catch((e) => console.log("Tự động phát bị chặn:", e));
+
+        // Mở khóa trước nhạc màn cuối (chạy im lặng rồi dừng) để sau này tự phát được
+        finaleMusic.muted = true;
+        finaleMusic
+          .play()
+          .then(() => {
+            finaleMusic.pause();
+            finaleMusic.currentTime = FINALE_START;
+          })
+          .catch(() => {});
       }
 
       function setEventListeners() {
